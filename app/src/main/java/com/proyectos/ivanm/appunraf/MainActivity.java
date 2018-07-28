@@ -89,13 +89,11 @@ public class MainActivity extends Activity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     // 
 
-                    String id = jsonObject.optString("id");
-                    String main = jsonObject.optString("main");
-                    String description = jsonObject.optString("description");
-                    String icon = jsonObject.optString("icon");
+                    String id = jsonObject.getString("id");
+                    String main = jsonObject.getString("main");
+                    String description = jsonObject.getString("description");
+                    String icon = jsonObject.getString("icon");
                 }
-
-
 
 
 
