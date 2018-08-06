@@ -77,27 +77,23 @@ public class MainActivity extends Activity {
                 //Toast.makeText(getBaseContext(), jsonDatosClima.getString("temp"),
                 //        Toast.LENGTH_LONG).show();
 
+
                 txtTemp.setText("Temperatura: " + jsonDatosClima.getString("temp") + "C°");
                 txtHumedad.setText("Humedad: " + jsonDatosClima.getString("humidity") + "%");
                 txtCiudad.setText(jsonResult.getString("name"));
-                ivIcono.setImageResource(R.drawable.lluvia);
 
+                JSONArray jsonArray = jsonResult.getJSONArray("weather");
 
-                JSONArray jsonArray = new JSONArray("weather");
-                for(int i = 0 ; i < jsonArray.length(); i++)
-                {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    // 
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                    String id = jsonObject.getString("id");
-                    String main = jsonObject.getString("main");
-                    String description = jsonObject.getString("description");
-                    String icon = jsonObject.getString("icon");
-                }
+                String tiempo = jsonObject.getString("main");
+                String descripcion = jsonObject.getString("description");
+                String icon = "i" + jsonObject.getString("icon");
 
+                txtTiempo.setText(tiempo);
+                txtDescripcion.setText(descripcion);
 
-
-
+                ivIcono.setImageResource(getResources().getIdentifier(icon, "drawable", getPackageName()));
 
 
             }catch (JSONException e) {
